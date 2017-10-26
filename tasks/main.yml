@@ -4,6 +4,7 @@
   user:
     user: "{{ item.username | default(item.name) | default(item) }}"
     shell: "{{ item.shell | default('/bin/bash') }}"
+    group: "{{ item.username | default(item.name) | default(item) }}"
     groups: "{{ item.groups | default(omit) }}"
     createhome: yes
     home: "/home/{{ item.username | default(item.name) | default(item) }}"
