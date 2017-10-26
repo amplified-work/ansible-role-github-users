@@ -1,4 +1,11 @@
 ---
+- name: Ensure GitHub user groups are present.
+  become: true
+  group:
+    name: "{{ item.username | default(item.name) | default(item) }}"
+    state: present
+  with_items: "{{ github_users }}"
+
 - name: Ensure GitHub user accounts are present.
   become: true
   user:
