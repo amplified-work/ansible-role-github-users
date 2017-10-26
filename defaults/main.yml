@@ -2,6 +2,8 @@
 github_users: []
   # You can specify an object with 'name' (required) and 'groups' (optional):
   # - name: geerlingguy
+  #   username: geerling
+  #   shell: /usr/bin/zsh
   #   groups: www-data,sudo
 
   # Or you can specify a GitHub username directly:
