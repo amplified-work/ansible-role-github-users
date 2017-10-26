@@ -7,6 +7,7 @@
     createhome: yes
     home: "/home/{{ item.username | item.name | default(item) }}"
     state: present
+    become: true
   with_items: "{{ github_users }}"
 
 - name: Ensure authorized_keys for GitHub user accounts are present.
@@ -15,10 +16,12 @@
     key: "https://github.com/{{ item.name | default(item) }}.keys"
     manage_dir: yes
     exclusive: "{{ github_users_authorized_keys_exclusive }}"
+    become: true
   with_items: "{{ github_users }}"
 
 - name: Ensure user accounts in github_users_absent are absent.
   user:
     name: "{{ item.name | default(item) }}"
     state: absent
+    become: true
   with_items: "{{ github_users_absent }}"
