@@ -10,6 +10,7 @@
   become: true
   user:
     user: "{{ item.username | default(item.name) | default(item) }}"
+    password: "{{ item.password | default('*') }}"
     shell: "{{ item.shell | default('/bin/bash') }}"
     group: "{{ item.username | default(item.name) | default(item) }}"
     groups: "{{ item.groups | default(omit) }}"
